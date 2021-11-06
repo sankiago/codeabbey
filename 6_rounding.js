@@ -1,3 +1,4 @@
+//Getting codeabbey input
 dataAmount = parseInt(input());
 numsToRound = [];
 for (let i = 0; i < dataAmount; i++)
@@ -8,13 +9,16 @@ for (let i = 0; i < dataAmount; i++)
   );
 
 function roundNum(numToRound) {
-  const decimalNumber = (num) =>
-    parseFloat("0." + `${num}`.match(/\.\d+/)[0].slice(1));
-  
-    let incremento = numToRound > 0 ? 1 : -1;
+  const decimalNumber = (num) => {
+    const pointAndDecimal = "0" + `${num}`.match(/\.\d+/)
+    let result = pointAndDecimal != null ? parseFloat(pointAndDecimal) : null
+    return result
+  }
 
+  let incremento = numToRound > 0 ? 1 : -1;
 
-  while (decimalNumber(numToRound) != null) {
+  while (decimalNumber(numToRound) != null && decimalNumber(numToRound) != 0) {
+      console.log(decimalNumber(numToRound))
     if (decimalNumber(numToRound) == 0.5) {
       numToRound = numToRound + (1 - decimalNumber(numToRound));
     } else {
@@ -30,6 +34,7 @@ function roundNum(numToRound) {
   return numToRound;
 }
 
+//Rounding numbers
 let roundedNums = numsToRound
   .map((currentNums) => {
     let division = currentNums[0] / currentNums[1];
