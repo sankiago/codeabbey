@@ -1,9 +1,6 @@
 import math
 import functools
 
-data_amount = int(input())
-array_to_order = list(map(lambda str: int(str), input().split(' ')))
-
 def mergeSort(myList):
     #extract sublists
     sublist_amount = math.trunc((len(myList) + 1) / 2)
@@ -45,6 +42,5 @@ def mergeSort(myList):
     sortedList = functools.reduce(mergeSorted, orderedSublists)
     return sortedList
 
-sorted_array = mergeSort(array_to_order)
-sorted_indexes = map(lambda item : array_to_order.index(item) + 1, sorted_array)
-print(*sorted_indexes)
+myBeautifulList = [15,5,4,6,7,8,9,10,11,12,13,3,2,1]
+print(mergeSort(myBeautifulList))
